@@ -1,6 +1,6 @@
 {
   "name": "find-nearest-us-cities",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Searches the nearest cities in The United States using [geokdbush](https://github.com/mourner/geokdbush). Data courtesy [US at geonames.org](http://download.geonames.org/export/dump/). Based on [find-nearest-cities](https://github.com/steffenmllr/find-nearest-cities)",
   "main": "index.js",
   "scripts": {
