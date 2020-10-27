@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/jmealo/find-nearest-us-cities/issues"
   },
-  "homepage": "https://github.com/jmealo/find-nearest-us-cities#readme"
+  "homepage": "https://github.com/jmealo/find-nearest-us-cities#readme",
+  "dependencies": {
+    "@turf/distance": "^6.0.1",
+    "@turf/helpers": "^6.1.4",
+    "geokdbush": "^1.1.0",
+    "kdbush": "^3.0.0"
+  }
 }
