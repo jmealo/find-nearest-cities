@@ -1,63 +1,49 @@
-# find-nearest-cities
+# find-nearest-us-cities
 
-Searches the nearest *cities*, using [geokdbush](https://github.com/mourner/geokdbush). Data taken from [cities1000 at geonames.org](http://download.geonames.org/export/dump/)
-
-[![build status](https://img.shields.io/travis/steffenmllr/find-nearest-cities.svg)](https://travis-ci.org/steffenmllr/find-nearest-cities)
-[![npm version](https://img.shields.io/npm/v/find-nearest-cities.svg)](https://www.npmjs.com/package/find-nearest-cities)
-![ISC-licensed](https://img.shields.io/github/license/steffenmllr/find-nearest-cities.svg)
-
+Searches the nearest cities in The United States using [geokdbush](https://github.com/mourner/geokdbush). Data courtesy [US at geonames.org](http://download.geonames.org/export/dump/). Based on [find-nearest-cities](https://github.com/steffenmllr/find-nearest-cities)
 
 ## Installing
 
 ```shell
-npm install find-nearest-cities
+npm install find-nearest-us-cities
 ```
-
-## Warning: Package Size
-This package includes the full 56MB JSON for all the cities, which are all loaded into memory
-
 ## Usage
 
 ```js
-const nearestStations = require('find-nearest-cities')
+const nearestCities = require('find-nearest-us-cities')
 
-const latitude = 52.509647;
-const longitude = 13.375944;
+// The Rocky Statue
+const latitude = 39.9649;
+const longitude = -75.1802;
 
 const cities = nearestCities(latitude, longitude);
 
-// [{
-//    id: '2822224',
-//    name: 'Tiergarten',
-//    asciiname: 'Tiergarten Bezirk',
-//    alternativeNames: ['Berlin-Tiergarten',
-//       'Tirgarten',
-//       'Tyrgartehn',
-//       'di er jia teng',
-//       'Тиргартен',
-//       'Тыргартэн',
-//       'טירגארטן',
-//       '蒂尔加滕'
-//    ],
-//    lat: 52.51667,
-//    lon: 13.36667,
-//    featureClass: 'P',
-//    featureCode: 'PPLX',
-//    country: 'DE',
-//    altCountry: '',
-//    adminCode: '16',
-//    countrySubdivision: '00',
-//    municipality: '11000',
-//    municipalitySubdivision: '11000000',
-//    population: 12328,
-//    dem: '36',
-//    tz: 'Europe/Berlin',
-//    lastModified: '2012-06-09',
-//    distance: 1281
-// }]
-
+/*
+[ { 
+    name: 'Fairmount',
+    lat: 39.97233,
+    lon: -75.18101,
+    state: 'PA'
+  },
+  { name: 'Brewerytown',
+    lat: 39.97706,
+    lon: -75.18185,
+    state: 'PA' },
+  { name: 'Strawberry Mansion',
+    lat: 39.98345,
+    lon: -75.18268,
+    state: 'PA' },
+  { name: 'S.W. Ctr Cty',
+    lat: 39.94281,
+    lon: -75.18086,
+    state: 'PA' },
+  { name: 'Point Breeze',
+    lat: 39.93345,
+    lon: -75.17796,
+    state: 'PA' }
+]
+*/
 ```
----
 
 ## API
 
@@ -69,12 +55,6 @@ Returns an array of the closest points from a given location in order of increas
 - `latitude`: query point latitude.
 - `maxDistance`: (optional) maximum distance in meters to search within (`Infinity` by default).
 - `maxResults`: (optional) maximum number of points to return (`5` by default).
-
-
-## Contributing
-
-If you **have a question**, **found a bug** or want to **propose a feature**, have a look at [the issues page](https://github.com/steffenmllr/find-nearest-cities/issues).
-
 
 ## Data License
 

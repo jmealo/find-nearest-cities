@@ -1,45 +1,19 @@
 {
-  "name": "find-nearest-cities",
-  "version": "1.0.0",
-  "description": "Find the nearest city for given coordinates with geonames.org data",
+  "name": "find-nearest-us-cities",
+  "version": "0.1.0",
+  "description": "Searches the nearest cities in The United States using [geokdbush](https://github.com/mourner/geokdbush). Data courtesy [US at geonames.org](http://download.geonames.org/export/dump/). Based on [find-nearest-cities](https://github.com/steffenmllr/find-nearest-cities)",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js | tap-spec",
-    "data": "wget http://download.geonames.org/export/dump/cities1000.zip -O cities1000.zip; unzip cities1000.zip; rm cities1000.zip"
+    "test": "node test.js"
   },
-  "files": [
-    "index.js",
-    "README.md",
-    "cities1000.json"
-  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/steffenmllr/find-nearest-cities.git"
+    "url": "git+https://github.com/jmealo/find-nearest-us-cities.git"
   },
-  "keywords": [
-    "nearest",
-    "city",
-    "geocode",
-    "geonames",
-    "population"
-  ],
-  "author": "Steffen Müller",
-  "license": "ISC",
+  "author": "",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/steffenmllr/find-nearest-cities/issues"
+    "url": "https://github.com/jmealo/find-nearest-us-cities/issues"
   },
-  "homepage": "https://github.com/steffenmllr/find-nearest-cities#readme",
-  "devDependencies": {
-    "JSONStream": "^1.3.3",
-    "split2": "^3.0.0",
-    "tap-spec": "^5.0.0",
-    "tape": "^4.9.1",
-    "through2": "^2.0.3"
-  },
-  "dependencies": {
-    "@turf/distance": "^6.0.1",
-    "@turf/helpers": "^6.1.4",
-    "geokdbush": "^1.1.0",
-    "kdbush": "^2.0.1"
-  }
+  "homepage": "https://github.com/jmealo/find-nearest-us-cities#readme"
 }

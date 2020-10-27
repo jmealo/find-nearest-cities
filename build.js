@@ -1,7 +1,7 @@
 const fs = require('fs');
 const split2 = require('split2');
 const JSONStream = require('JSONStream');
-const through = require('through2')
+const through = require('through2');
 
 const fields = [
     'id',
@@ -38,17 +38,18 @@ const rowStream = through.obj(function (line, enc, cb) {
     }, {})
 
     if (!row.id) return
-    this.push(row)
+    if (row.featureCode.startsWith('PPL') && !row.featureCode.endsWith('H') && !row.name.toLowerCase().endsWith('(historical)')) {
+        const { name, lat, lon, adminCode: state } = row;
+        // Remove timezone for now
+        this.push([ name, lat, lon, state ])
+    }
 
     cb();
 })
 
-fs.createReadStream('./cities1000.txt')
+fs.createReadStream('./US.txt')
   .pipe(split2())
   .pipe(rowStream)
   .pipe(JSONStream.stringify())
-  .pipe(fs.createWriteStream( __dirname + '/cities1000.json' ))
+  .pipe(fs.createWriteStream( __dirname + '/US.json' ))
   .on('error', console.error);
-
-
-
