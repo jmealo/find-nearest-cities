@@ -1,9 +1,10 @@
-const data = require('./US.json');
+const points = require('./US.json');
 const distance = require('@turf/distance').default;
 const { point } = require('@turf/helpers');
-const kdbush = require('kdbush');
+const KDBush = require('kdbush');
 const geokdbush = require('geokdbush');
-const index = kdbush(data, (p) => p[1], (p) => p[2]);
+
+const index = new KDBush(points, p => p[1], p => p[2], 64);
 
 const isFloat = (n) => Number(n) === n && n % 1 !== 0;
 const nearestCities = (latitude, longitude, maxDistance, maxResults =  5) => {
