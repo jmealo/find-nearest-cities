@@ -4,21 +4,22 @@ const { point } = require('@turf/helpers');
 const KDBush = require('kdbush');
 const geokdbush = require('geokdbush');
 
-const index = new KDBush(points, p => p[1], p => p[2], 64);
+// The points file is a JSON encoded array where each item is in the following format:
+// [ city, latitude, longitude, state ] ex: ["Manayunk", 40.02456, -75.21407, "PA"]
+const index = new KDBush(points, p => p[2], p => p[1], 64);
 
 const isFloat = (n) => Number(n) === n && n % 1 !== 0;
 const nearestCities = (latitude, longitude, maxDistance, maxResults =  5) => {
     if (!isFloat(latitude)) throw new Error('`latitude` has to be a Float');
     if (!isFloat(longitude)) throw new Error('`longitude` has to be a Float');
 
-    const pointFrom = point([longitude, latitude]); // turf expects lon, lat 🤷
+    const pointFrom = point([longitude, latitude]);
     const maxDistanceInMeters = maxDistance ? maxDistance / 1000 : maxDistance;
-    return geokdbush.around(index, latitude, longitude, maxResults, maxDistanceInMeters).map(city => {
-        const pointTo = point([city.lon, city.lat]); // turf expects lon, lat 🤷
+    return geokdbush.around(index, longitude, latitude, maxResults, maxDistanceInMeters).map(city => {
+        const pointTo = point([city.lon, city.lat]);
         city.distance = Math.ceil(distance(pointFrom, pointTo, { units: 'meters' }));
         const [name, lat, lon, state] = city;
         return {name, lat, lon, state}
-
     }).sort(s => s.distance)
 };
 
