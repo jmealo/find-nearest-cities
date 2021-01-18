@@ -1,6 +1,6 @@
 {
   "name": "find-nearest-us-cities",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Searches the nearest cities in The United States using [geokdbush](https://github.com/mourner/geokdbush). Data courtesy [US at geonames.org](http://download.geonames.org/export/dump/). Based on [find-nearest-cities](https://github.com/steffenmllr/find-nearest-cities)",
   "main": "index.js",
   "scripts": {
@@ -17,12 +17,13 @@
   },
   "homepage": "https://github.com/jmealo/find-nearest-us-cities#readme",
   "dependencies": {
-    "@turf/distance": "^6.0.1",
-    "@turf/helpers": "6.1.4",
     "geokdbush": "^1.1.0",
     "kdbush": "^3.0.0"
   },
   "devDependencies": {
-    "tape": "^5.0.1"
+    "jsonstream": "^1.0.3",
+    "split2": "^3.2.2",
+    "tape": "^5.0.1",
+    "through2": "^4.0.2"
   }
 }
