@@ -11,10 +11,10 @@ const nearestCities = (latitude, longitude, maxDistance, maxResults =  5) => {
     if (!isFloat(latitude)) throw new Error('`latitude` has to be a Float');
     if (!isFloat(longitude)) throw new Error('`longitude` has to be a Float');
 
-    const pointFrom = point([latitude, longitude]);
+    const pointFrom = point([longitude, latitude]); // turf expects lon, lat 🤷
     const maxDistanceInMeters = maxDistance ? maxDistance / 1000 : maxDistance;
     return geokdbush.around(index, latitude, longitude, maxResults, maxDistanceInMeters).map(city => {
-        const pointTo = point([city.lat, city.lon]);
+        const pointTo = point([city.lon, city.lat]); // turf expects lon, lat 🤷
         city.distance = Math.ceil(distance(pointFrom, pointTo, { units: 'meters' }));
         const [name, lat, lon, state] = city;
         return {name, lat, lon, state}
