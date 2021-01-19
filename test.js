@@ -18,6 +18,40 @@ test('find-nearest-cities', function (t) {
         t.end();
     });
 
+    t.test('divided city: Texarkana, AR', function(t) {
+        t.plan(5);
+
+        console.time("benchmark");
+        const latitude = 33.433056;
+        const longitude = -94.020556;
+        const cities = nearestCity(latitude, longitude, undefined, 5);
+        console.timeEnd("benchmark");
+
+        t.equal(cities[0].state, 'AR', 'Texarkana, AR (STATE) should be the first item');
+        t.equal(cities[0].name, 'Texarkana', 'Texarkana, AR (NAME) should be the first item');
+        t.equal(cities[1].state, 'TX', 'Texarkana, TX (STATE) should be the second item');
+        t.equal(cities[1].name, 'Texarkana', 'Texarkana, TX (NAME) should be the second item');
+        t.equal(cities.length, 5, 'Should find at least 5 cities for Texarkana.');
+        t.end();
+    });
+
+    t.test('divided city: Texarkana, TX', function(t) {
+        t.plan(5);
+
+        console.time("benchmark");
+        const latitude = 33.437222;
+        const longitude = -94.0675;
+        const cities = nearestCity(latitude, longitude, undefined, 5);
+        console.timeEnd("benchmark");
+
+        t.equal(cities[0].state, 'TX', 'Texarkana, TX (STATE) should be the first item');
+        t.equal(cities[0].name, 'Texarkana', 'Texarkana, TX (NAME) should be the first item');
+        t.equal(cities[1].state, 'AR', 'Texarkana, AR (STATE) should be the second item');
+        t.equal(cities[1].name, 'Texarkana', 'Texarkana, AR (NAME) should be the second item');
+        t.equal(cities.length, 5, 'Should find at least 5 cities for Texarkana.');
+        t.end();
+    });
+
     t.test('nearest city for Bird in Hand', function(t) {
         t.plan(1);
 

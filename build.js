@@ -50,6 +50,6 @@ const rowStream = through.obj(function (line, enc, cb) {
 fs.createReadStream('./US.txt')
   .pipe(split2())
   .pipe(rowStream)
-  .pipe(JSONStream.stringify())
+  .pipe(JSONStream.stringify('[',',',']'))
   .pipe(fs.createWriteStream( __dirname + '/US.json' ))
   .on('error', console.error);
